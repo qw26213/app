@@ -1,0 +1,110 @@
+body {
+    height: 100%;
+    font-family: PingFang SC, Helvetica Neue, Microsoft YaHei, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+.mainBody {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 5px;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media(max-width: 600px) {
+    .mainBody {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.toper {
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    color: #333;
+}
+
+.toper span {
+    color: #999;
+    font-weight: normal;
+}
+
+.itemTit {
+    font-size: 15px;
+    color: #000;
+    line-height: 26px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 0
+}
+
+.btns {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    padding-right: 0;
+    border-radius: 4px;
+    min-height: 23px;
+}
+
+a.btn {
+    display: inline-block;
+    color: #222;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+a.btn.bold {
+    font-weight: bold
+}
+
+.btn:hover {
+    color: #42b983;
+    border-bottom: 1px #42b983 solid;
+}
+
+.inputs {
+    display: block;
+    margin-top: 10px;
+}
+
+.btn_c {
+    padding: 0 12px;
+    height: 32px;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    background: #09f;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.inputItem {
+    display: inline-block;
+    width: 80px;
+    height: 32px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px #bbb solid;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.slabel {
+    display: inline-block;
+    width: 50px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
