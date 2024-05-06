@@ -2,194 +2,484 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>个人书签</title>
-    <link href="assets/logo.png" rel="icon">
-    <link href="css/index.css?v=2" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>个人书签</title>
+  <link href="./images/favgo.png" rel="icon" />
+  <link href="./css/book.css?v=2" rel="stylesheet" />
+  <script src="./js/vue.global.js"></script>
 </head>
 
 <body>
-    <div class="mainBody">
-        <div class="toper"> <span style="margin-right:12px">——</span>个人书签<span style="margin-left:12px">——</span></div>
-        <h3 class="itemTit">项目入口</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="http://www.fengyanginfo.com/">丰扬分销</a>
-            <a class="btn" target="_blank" href="http://www.shanshuiyuntu.com/screen2/">郧阳大屏</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/soil/">采土系统</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/merchant/">可克达拉</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/cloud/">零碳怀来</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/screenkkdl/">新疆大屏(old)</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/scrkkdl/">新疆大屏(new)</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/screen_gbzx/">耕保大屏</a>
-            <a class="btn" target="_blank" href="https://soil.shanshuiyuntu.com/screen_hl/">怀来大屏</a>
-            <a class="btn" target="_blank" href="http://alpha-fw-gaia.shanshuiyuntu.com/">身份中心(a)</a>
-            <a class="btn" target="_blank" href="http://beta-fw-gaia.shanshuiyuntu.com/">身份中心(b)</a>
-            <a class="btn" target="_blank" href="http://alpha-fw-gaia-soil-sampling-v2.shanshuiyuntu.com/">调查采样(a)</a>
-            <a class="btn" target="_blank" href="http://beta-fw-gaia-soil-sampling-v2.shanshuiyuntu.com/">调查采样(b)</a>
-        </div>
-        <h3 class="itemTit">开发环境</h3>
-        <div class="btns">
-            <a class="btn" href="http://localhost:1000/">Port:1000</a>
-            <a class="btn" href="http://localhost:2000/">Port:2000</a>
-            <a class="btn" href="http://localhost:3000/">Port:3000</a>
-            <a class="btn" href="http://localhost:6000/">Port:6000</a>
-            <a class="btn" href="http://localhost:6600/">Port:6600</a>
-            <a class="btn" href="http://localhost:8000/">Port:8000</a>
-            <a class="btn" href="http://localhost:8008/">Port:8008</a>
-            <a class="btn" href="http://localhost:8080/">Port:8080</a>
-            <a class="btn" href="http://localhost:8600/">Port:8600</a>
-            <a class="btn" href="http://localhost:8800/">Port:8800</a>
-            <a class="btn" href="http://localhost:8888/">Port:8888</a>
-        </div>
-        <h3 class="itemTit">技术博客</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://blog.csdn.net/qq_25506089">CSDN</a>
-            <a class="btn" target="_blank" href="https://www.jianshu.com/">简书</a>
-            <a class="btn" target="_blank" href="https://juejin.im/">掘金</a>
-            <a class="btn" target="_blank" href="https://www.nowcoder.com/">牛客网</a>
-            <a class="btn" target="_blank" href="https://www.leetcode.com/">力扣</a>
-            <a class="btn" target="_blank" href="https://github.com/">Github</a>
-            <a class="btn" target="_blank" href="https://gitee.com/">Gitee</a>
-            <a class="btn" target="_blank" href="http://39.105.108.55:5400/dashboard/projects">GitLab</a>
-            <a class="btn" target="_blank" href="https://www.imooc.com/u/index/allcourses">慕课网</a>
-            <a class="btn" target="_blank" href="https://kaiwu.lagou.com/learn">拉勾教育</a>
-            <a class="btn" target="_blank" href="https://time.geekbang.org/">极客时间</a>
-            <a class="btn" target="_blank" href="https://space.bilibili.com/434617924/">哔哩哔哩</a>
-            <a class="btn" target="_blank" href="https://www.ixigua.com/channel/dianshiju">西瓜视频</a>
-            <a class="btn" target="_blank" href="https://weibo.com/">新浪微博</a>
-            <a class="btn" target="_blank" href="https://dev.dcloud.net.cn/app/index">Dcloud</a>
-        </div>
-        <h3 class="itemTit">前端工程化</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://segmentfault.com/a/1190000011685248">BFF中间层</a>
-            <a class="btn" target="_blank" href="https://blog.csdn.net/qq_41887214/article/details/122248353">CLI脚手架</a>
-            <a class="btn" target="_blank" href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP">Docker</a>
-            <a class="btn" target="_blank" href="https://www.cnblogs.com/chyingp/p/pm2-documentation.html">PM2</a>
-            <a class="btn" target="_blank" href="https://www.kubernetes.org.cn/k8s">Kubernetes</a>
-            <a class="btn" target="_blank" href="https://cn.vitejs.dev/config/#root">Vite2.0</a>
-            <a class="btn" target="_blank" href="https://webpack.docschina.org/api/">webpack</a>
-            <a class="btn" target="_blank" href="https://www.npmjs.com/settings/qw26213/packages">npm</a>
-            <a class="btn" target="_blank" href="https://eslint.bootcss.com/">Eslint</a>
-            <a class="btn" target="_blank" href="https://stylelint.bootcss.com/">stylelint</a>
-            <a class="btn" target="_blank" href="https://www.babeljs.cn/docs/">babel</a>
-            <a class="btn" target="_blank" href="https://www.prettier.cn/docs/install.html">prettier</a>
-            <a class="btn" target="_blank" href="https://my.oschina.net/u/4350597/blog/3522527">prettier配置</a>
-            <a class="btn" target="_blank" href="http://javascript.ruanyifeng.com/nodejs/module.html">CommonJs</a>
-        </div>
-        <h3 class="itemTit">组件库</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/table">element</a>
-            <a class="btn" target="_blank" href="https://element-plus.org/zh-CN/component/table.html">element-Plus</a>
-            <a class="btn" target="_blank" href="https://youzan.github.io/vant/">vant</a>
-            <a class="btn" target="_blank" href="https://2x.antdv.com/components/table-cn">Antd(vue)</a>
-            <a class="btn" target="_blank" href="https://ant.design/components/table-cn/">Antd(react)</a>
-            <a class="btn" target="_blank" href="https://uniapp.dcloud.io/api/README">uni-app</a>
-            <a class="btn" target="_blank" href="https://developers.weixin.qq.com/doc/">小程序</a>
-            <a class="btn" target="_blank" href="https://gitcode.net/qq_25506089/minui">minui</a>
-            <a class="btn" target="_blank" href="https://taro-docs.jd.com/taro/docs/folder">Taro</a>
-        </div>
-        <h3 class="itemTit">热门框架</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://v3.cn.vuejs.org/api/composition-api.html#setup">Vue3.0</a>
-            <a class="btn" target="_blank" href="https://es6.ruanyifeng.com/">ES6</a>
-            <a class="btn" target="_blank" href="https://react.docschina.org/">React</a>
-            <a class="btn" target="_blank" href="https://typescript.bootcss.com/">TypeScript</a>
-            <a class="btn" target="_blank" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue</a>
-            <a class="btn" target="_blank" href="https://umijs.org/zh-CN/docs/getting-started">UmiJS</a>
-            <a class="btn" target="_blank" href="https://dvajs.com/guide/">Dva</a>
-            <a class="btn" target="_blank" href="https://segmentfault.com/a/1190000040373313">Pinia</a>
-            <a class="btn" target="_blank" href="https://qiankun.umijs.org/zh/guide">qiankun</a>
-            <a class="btn" target="_blank" href="https://www.nextjs.cn/docs/getting-started">NextJs</a>
-            <a class="btn" target="_blank" href="https://reactnative.cn/docs/next/getting-started">RN</a>
-            <a class="btn" target="_blank" href="https://demo.grapecity.com.cn/spreadjs/SpreadJSTutorial/">SpreadJS</a>
-        </div>
-        <h3 class="itemTit">可视化相关</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="http://www.mapbox.cn/mapbox-gl-js/api/">mapbox-gl</a>
-            <a class="btn" target="_blank" href="https://openlayers.org/en/latest/apidoc/">openlayers</a>
-            <a class="btn" target="_blank" href="https://leafletjs.com/reference-1.7.1.html">leaflet</a>
-            <a class="btn" target="_blank" href="https://www.giserdqy.com/secdev/leaflet/14523/">leaflet中文</a>
-            <a class="btn" target="_blank" href="https://turfjs.fenxianglu.cn/category/">turfjs</a>
-            <a class="btn" target="_blank" href="https://www.tianditu.gov.cn/">天地图</a>
-            <a class="btn" target="_blank" href="https://lbs.qq.com/webDemoCenter/glAPI/glMap/createMap">腾讯地图</a>
-            <a class="btn" target="_blank" href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图</a>
-            <a class="btn" target="_blank" href="https://echarts.apache.org/zh/option.html#title">Echarts</a>
-            <a class="btn" target="_blank" href="https://api.highcharts.com.cn/highcharts">Highcharts</a>
-            <a class="btn" target="_blank" href="https://g2.antv.vision/zh/examples/gallery">Antv</a>
-            <a class="btn" target="_blank" href="http://oa.kqgeo.com:20231/Examples/examples/index.html">苍穹</a>
-            <a class="btn" target="_blank" href="https://cesium.com/platform/cesiumjs/">cesiumJs</a>
-            <a class="btn" target="_blank" href="http://datav.aliyun.com/portal/school/atlas/area_selector">地区选择</a>
-        </div>
-        <h3 class="itemTit">资源/工具</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://tool.lu/">在线工具</a>
-            <a class="btn" target="_blank" href="https://processon.com/diagrams">ProcessOn</a>
-            <a class="btn" target="_blank" href="https://www.iconfont.cn/">阿里图标</a>
-            <a class="btn" target="_blank" href="https://www.bootcdn.cn/">bootcdn</a>
-            <a class="btn" target="_blank" href="https://cdnjs.com/libraries">cdnjs</a>
-            <a class="btn" target="_blank" href="https://devcloud.cn-north-4.huaweicloud.com/home">华为云</a>
-            <a class="btn" target="_blank" href="https://mp.weixin.qq.com/">公众号</a>
-            <a class="btn" target="_blank" href="https://org.modao.cc/feature/prototype">墨刀</a>
-            <a class="btn" target="_blank" href="https://lanhuapp.com/web/#/item">蓝湖</a>
-            <a class="btn" target="_blank" href="https://tower.im/teams/924699/projects/111/">Tower</a>
-            <a class="btn" target="_blank" href="https://www.cnplugins.com/">谷歌插件</a>
-            <a class="btn" target="_blank" href="https://www.yuque.com/rs385i">语雀</a>
-            <a class="btn" target="_blank" href="https://easydoc.net/">易文档</a>
-            <a class="btn" target="_blank" href="https://docs.qq.com/desktop/">腾讯文档</a>
-            <a class="btn" target="_blank" href="https://tinypng.com/">tinypng</a>
-        </div>
-        <h3 class="itemTit">Java</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="http://felord.cn/_doc/_springboot/2.1.5.RELEASE/_book/">Spring Boot</a>
-            <a class="btn" target="_blank" href="https://mp.baomidou.com/guide/">Mybatis-plus</a>
-            <a class="btn" target="_blank" href="https://mybatis.org/mybatis-3/zh/index.html">Mybatis</a>
-            <a class="btn" target="_blank" href="https://blog.51cto.com/topic/shenrulijiejavazhujie.html">Java注解</a>
-            <a class="btn" target="_blank" href="https://php.cn/faq/417047.html">Springboot注解</a>
-            <a class="btn" target="_blank" href="http://www.imooc.com/wiki/">慕课教程</a>
-            <a class="btn" target="_blank" href="https://www.imooc.com/article/1080">Java集合类</a>
-            <a class="btn" target="_blank" href="https://mvnrepository.com/">maven仓库</a>
-            <a class="btn" target="_blank" href="https://www.jianshu.com/p/6b0c7625b2aa">SQL常用语句</a>
-            <a class="btn" target="_blank"
-                href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html">函数式编程</a>
-            <a class="btn" target="_blank" href="http://www.imooc.com/wiki/Designlesson">设计模式</a>
-        </div>
-        <h3 class="itemTit">Nodejs</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">MDN</a>
-            <a class="btn" target="_blank" href="https://www.runoob.com/nodejs/nodejs-tutorial.html">NodeJs</a>
-            <a class="btn" target="_blank" href="https://www.sequelize.com.cn/">sequelize</a>
-            <a class="btn" target="_blank" href="https://www.expressjs.com.cn/">express</a>
-            <a class="btn" target="_blank" href="https://www.nodebeginner.org/index-zh-cn.html">NodeJs</a>
-            <a class="btn" target="_blank" href="https://eggjs.org/zh-cn/intro/quickstart.html">egg.js</a>
-            <a class="btn" target="_blank" href="https://docs.nestjs.cn/6/controllers">Nest.js</a>
-            <a class="btn" target="_blank" href="https://midwayjs.org//">Midway.js</a>
-            <a class="btn" target="_blank" href="https://graphql.cn/">GraphQL</a>
-            <a class="btn" target="_blank" href="http://www.imooc.com/wiki/nginxlesson">Nginx</a>
-            <a class="btn" target="_blank" href="http://www.imooc.com/wiki/linuxlesson">Linux</a>
-            <a class="btn" target="_blank" href="http://www.imooc.com/wiki/httplesson">HTTP</a>
-        </div>
-        <h3 class="itemTit">牛人博客</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="http://f2er.club/">醉牛前端</a>
-            <a class="btn" target="_blank" href="http://ife.baidu.com/preface.html">百度前端学院</a>
-            <a class="btn" target="_blank" href="https://shengxinjing.cn/">大圣前端</a>
-            <a class="btn" target="_blank" href="https://lxchuan12.gitee.io/">若川博客</a>
-            <a class="btn" target="_blank" href="https://zhuanlan.zhihu.com/p/121056616">性能优化</a>
-            <a class="btn" target="_blank" href="https://niexiaotao.cn/">niexiaotao</a>
-            <a class="btn" target="_blank" href="https://ideazhao.com/">ideazhao</a>
-        </div>
-        <h3 class="itemTit">其它</h3>
-        <div class="btns">
-            <a class="btn" target="_blank" href="http://bonsaiden.github.io/JavaScript-Garden/zh/">JavaScript花园</a>
-            <a class="btn" target="_blank" href="https://overapi.com/javascript">Javascript清单</a>
-            <a class="btn" target="_blank" href="http://css.doyoe.com/">CSS手册</a>
-            <a class="btn" target="_blank" href="https://devdocs.io/javascript/">devdocs</a>
-            <a class="btn" target="_blank"
-                href="https://docs.github.com/cn/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">gitPages</a>
-        </div>
-    </div>
+  <div id="app" class="mainBody">
+    <div class="toper"><span style="margin-right:12px">——</span>个人书签<span style="margin-left:12px">——</span></div>
+    <eles t="1.项目入口" :data="data1"></eles>
+    <eles t="2.Cesium" :data="data2"></eles>
+    <eles t="3.技术网站" :data="data3"></eles>
+    <eles t="4.前端工程化" :data="data4"></eles>
+    <eles t="5.前端框架/组件库" :data="data5"></eles>
+    <eles t="6.前端可视化" :data="screen"></eles>
+    <eles t="7.Nodejs" :data="nodejs"></eles>
+    <eles t="8.Java" :data="java"></eles>
+    <eles t="9.头部博客" :data="blogs"></eles>
+    <eles t="10.慕课教程" :data="imooc"></eles>
+    <eles t="11.资源/工具" :data="tools"></eles>
+    <eles t="12.Demo" :data="demos"></eles>
+  </div>
 </body>
 
+<script type="text/x-template" id="eles">
+  <h3 class="itemTit">{{ t }}</h3>
+  <div class="btns">
+    <a class="btn" v-for="it in data.map(item => item.split(','))" :key="it[0]" target="_blank" :href="it[0]">{{ it[1] }}</a>
+  </div>
+</script>
+
+<script>
+  // https://apis.map.qq.com/ws/location/v1/ip?ip=111.206.145.41&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77
+  const eles = {
+    template: '#eles',
+    props: {
+      data: Array,
+      t: ""
+    }
+  }
+  const { createApp } = Vue
+  createApp({
+    components: { eles },
+    data() {
+      return {
+        titles: [],
+        data1: [
+          "https://beta-fw-gaia-soil.shanshuiyuntu.com,土壤中心",
+          "https://beta-fa-gaia-soil.shanshuiyuntu.com,调查采样(新)",
+          "http://localhost:3000,✧3000",
+          "http://localhost:3002,✧3002",
+          "http://localhost:3006,✧3006",
+          "http://localhost:5000,✧5000",
+          "http://localhost:5173,✧5173",
+          "http://localhost:6000,✧6000",
+          "http://localhost:8000,✧8000",
+          "http://localhost:8008,✧8008",
+          "http://localhost:8080,✧8080",
+          "http://localhost:8888,✧8888",
+          "http://8.140.20.80,springboot",
+          "http://127.0.0.1:1688/vuecreate,vuecreate",
+        ],
+        data2: [
+          "https://docs.qq.com/doc/DZGhicm5kRkF3ZmJT,地图下载笔记",
+          "http://mapgl.com/3d/,Cesium三维案例",
+          "https://www.cnblogs.com/fuckgiser/p/5706842.html,cesium学习",
+          "https://www.zhihu.com/column/c_1317874447190585344,cesium知乎",
+          "https://whgok.gitee.io/cesium_marker/,cesium-demo",
+          "https://www.wenjiangs.com/doc/yxtaqxnw,Cesium入门",
+          "https://www.vvpstk.com/public/Cesium/Documentation/Animation.html,Cesium文档",
+          "https://sandcastle.cesium.com,Cesium示例",
+          "https://www.arcgis.com/home/webmap/viewer.html,ArcGis地图",
+          "https://www.runoob.com/w3cnote/html5-canvas-intro.html,canvas学习"
+        ],
+        data3: [
+          "https://juejin.cn/frontend,掘金",
+          "https://blog.csdn.net/qq_25506089,CSDN",
+          "https://www.jianshu.com/techareas/frontend,简书",
+          "https://www.nowcoder.com,牛客网",
+          "https://www.leetcode.com,力扣",
+          "https://github.com,Github",
+          "https://gitee.com,Gitee",
+          "https://www.imooc.com/u/index/allcourses,慕课网",
+          "https://kaiwu.lagou.com/learn,拉勾教育",
+          "https://time.geekbang.org,极客时间",
+          "https://space.bilibili.com/37974444,B站",
+          "http://yun.itheima.com/subject/javamap/index.html,黑马程序员",
+          "https://gitee.com/whgok/home/tree/master/knowledge,Knowledge",
+          "https://www.ixigua.com/channel/dianshiju,西瓜视频",
+          "https://weibo.com/,新浪微博"
+        ],
+        data4: [
+          "https://segmentfault.com/a/1190000011685248,BFF",
+          "https://webpack.docschina.org/api/,Webpack",
+          "https://cn.rollupjs.org/introduction,Rollup",
+          "https://cn.vitejs.dev/guide/,Vite",
+          "https://www.npmjs.com/settings/qw26213/packages,npm",
+          "https://www.eslint.com.cn,ESlint",
+          "https://www.stylelint.com.cn,Stylelint",
+          "https://www.babeljs.cn/docs/,Babel",
+          "https://www.postcss.com.cn,PostCSS",
+          "https://www.prettier.cn/docs/install.html,Prettier",
+          "https://my.oschina.net/u/4350597/blog/3522527,Prettier配置",
+          "http://javascript.ruanyifeng.com/nodejs/module.html,CommonJs",
+        ],
+        data5: [
+          "https://cn.vuejs.org/guide/introduction.html,Vue3",
+          "https://es6.ruanyifeng.com,ES6",
+          "https://react.docschina.org,React",
+          "https://dvajs.com/guide/,Dva",
+          "https://qiankun.umijs.org/zh/guide,qiankun",
+          "https://www.nextjs.cn/docs/getting-started,NextJs",
+          "https://element.eleme.cn/#/zh-CN/component/table,Element",
+          "https://element-plus.org/zh-CN/component/table.html,Element-Plus",
+          "https://youzan.github.io/vant/,Vant",
+          "https://uniapp.dcloud.net.cn/collocation/pages.html,uni-app",
+          "https://developers.weixin.qq.com/doc,小程序",
+          "https://echarts.apache.org/zh/option.html,ECharts",
+          "https://www.ucharts.cn/v2/#/demo/index,uCharts",
+          "https://g2.antv.vision/zh/examples/gallery,Antv",
+          "https://threejs.org,ThreeJs",
+          "https://www.sass.hk,Sass"
+        ],
+        screen: [
+          "https://lbs.qq.com/webDemoCenter/glAPI/glMap/createMap,腾讯地图",
+          "https://lbs.amap.com/api/javascript-api/guide/abc/quickstart,高德地图",
+          "https://www.tianditu.gov.cn,天地图",
+          "https://docs.mapbox.com/mapbox-gl-js/example,Mapbox GL",
+          "https://www.giserdqy.com/secdev/leaflet/14523/,Leaflet中文",
+          "https://turfjs.fenxianglu.cn/category/,Turfjs",
+          "https://www.zhihu.com/question/34378366/answer/2538153253,知乎问答",
+          "http://datav.aliyun.com/portal/school/atlas/area_selector,地区选择",
+          "https://geojson.cn,geojson",
+          "https://geojson.io,在线生成geojson",
+          "https://mapshaper.org,shp转geojson",
+          "https://sasclouds.com/chinese/normal,sasclouds",
+          "https://anyconv.com/tw/kml-zhuan-geojson,转Geojson"
+        ],
+        nodejs: [
+          "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript,MDN",
+          "https://overapi.com/javascript,Javascript清单",
+          "https://devdocs.io/javascript/,Devdocs",
+          "https://www.sequelize.com.cn/,sequelize",
+          "https://www.expressjs.com.cn/,Express",
+          "https://www.nodeapp.cn,Nodejs",
+          "https://eggjs.org,Egg",
+          "https://docs.nestjs.cn,Nest.js",
+          "https://midwayjs.org/,Midway.js",
+          "https://graphql.cn/,GraphQL",
+        ],
+        java: [
+          "https://www.runoob.com/java/java-tutorial.html,JavaSE",
+          "https://hollischuang.gitee.io/tobetopjavaer,Java成神之路",
+          "https://spring.io/projects/spring-boot,Spring Boot",
+          "https://spring.io/projects/spring-cloud,Spring Cloud",
+          "https://redis.io/docs/getting-started,Redis",
+          "https://www.begtut.com/mysql/mysql-tutorial.html,MySQL",
+          "https://www.runoob.com/maven/maven-tutorial.html,Maven",
+          "https://mvnrepository.com/,Maven仓库",
+          "https://mybatis.org/mybatis-3/zh/index.html,MyBatis",
+          "https://mp.baomidou.com/,MyBatis-Plus"
+        ],
+        blogs: [
+          "https://developer.aliyun.com/graph/java,java开发手册",
+          "http://ife.baidu.com/preface.html,百度前端学院",
+          "https://lxchuan12.gitee.io/,若川博客",
+          "https://www.liaoxuefeng.com,廖雪峰",
+          "https://zhuanlan.zhihu.com/p/121056616,性能优化",
+          "https://niexiaotao.cn/,niexiaotao",
+          "https://ideazhao.com/,ideazhao",
+          "https://www.cnblogs.com/yaopengfei/category/2088938.html,yaopengfei",
+          "https://www.jianshu.com/u/d21343d94d3f,侯紅杰",
+          "https://juejin.cn/post/7215895579464974392,早起的年轻人",
+          "https://gitee.com/android.long/spring-boot-study/tree/master,早起的年轻人Git",
+          "https://5000yan.com/fenlei/zhuzi,诸子百家",
+          "https://www.jianshu.com/nb/52630489,道德经"
+        ],
+        imooc: [
+          "https://www.imooc.com/wiki/springbootlesson,Spring Boot",
+          "https://www.runoob.com/design-pattern/singleton-pattern.html,设计模式",
+          "https://www.imooc.com/wiki/datalesson,数据结构",
+          "http://www.imooc.com/wiki/nginxlesson,Nginx",
+          "http://www.imooc.com/wiki/linuxlesson,Linux",
+          "http://www.imooc.com/wiki/rabbitmqlesson,RabbitMQ",
+          "http://www.imooc.com/wiki/httplesson,HTTP",
+          "https://www.imooc.com/wiki/concurrencylesson,Java并发",
+          "https://www.imooc.com/wiki/nettylesson,Netty",
+          "http://www.imooc.com/wiki/mysqladvanced,MySQL进阶",
+          "https://www.imooc.com/wiki/javatextlesson,Java面试",
+          "https://www.imooc.com/article/1080,Java集合类",
+          "https://nacos.io/zh-cn/docs/what-is-nacos.html,Nacos",
+          "https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP,Docker",
+          "https://www.lookroot.cn/284.html,Thymeleaf"
+        ],
+        tools: [
+          "https://tool.lu,在线工具",
+          "https://processon.com/diagrams,ProcessOn",
+          "https://www.iconfont.cn,阿里图标",
+          "https://mp.weixin.qq.com/,公众号",
+          "https://lanhuapp.com/web/#/item,蓝湖",
+          "https://www.cnplugins.com/,谷歌插件",
+          "https://docs.qq.com/desktop/,腾讯文档",
+          "https://tinypng.com/,Tinypng",
+          "https://tool.lu/markdown,Markdown工具",
+          "https://try.redis.io,Redis测试",
+          "http://wstool.js.org,WS在线测试",
+          "https://yiyan.baidu.com,文心一言",
+          "https://wjchat.cn//index.php,易联AI"
+        ],
+        demos: [
+          "./amap/index.html,amap",
+          "./leaflet/index.html,leaflet",
+          "./leaflet/leafline.html,leaflet飞行1",
+          "./leaflet/leafant.html,leaflet飞行2",
+          "./leaflet/flight.html,leaflet飞行3",
+          "./leaflet/compass.html,指北针",
+          "./leaflet/heatmap.html,heatmap",
+          "./leaflet/layers.html,layers",
+          "./shanshui/super.html,supermap",
+          "https://whgok.gitee.io/cesium-demo/demo1.html,cesium",
+          "./mine/pk.html,PK",
+          "./mine/tanjing.html,tanjing",
+          "./mine/lunyu.html,lunyu"
+        ]
+      }
+    }
+  }).mount('#app')
+
+  const ccc = [
+    "AAF0E9",
+    "B0F2D3",
+    "B0F4BC",
+    "BFF8B2",
+    "DAFBB2",
+    "EDF9AD",
+    "DCEC91",
+    "A0D567",
+    "60BD42",
+    "2CA432",
+    "148E35",
+    "20853D",
+    "559037",
+    "819D2F",
+    "ABA826",
+    "D7B117",
+    "EBA509",
+    "E18302",
+    "CB5902",
+    "C53602",
+    "9D1901",
+    "820C01",
+    "760F03",
+    "721906",
+    "702007",
+    "6E280A",
+    "6A2D0C",
+    "733C1B",
+    "815032",
+    "8E664D",
+    "997C6C",
+    "A69992"
+  ]
+
+  function toRgba(color) {
+    color = color.toLowerCase()
+    var rgb = new Array();
+    for (x = 0; x < 3; x++) {
+      rgb[0] = color.substr(x * 2, 2)
+      rgb[3] = "0123456789abcdef"; rgb[1] = rgb[0].substr(0, 1)
+      rgb[2] = rgb[0].substr(1, 1)
+      rgb[20 + x] = rgb[3].indexOf(rgb[1]) * 16 + rgb[3].indexOf(rgb[2])
+    }
+    return 'new L.supermap.ServerColor(' + rgb[20] + ',' + rgb[21] + ',' + rgb[22] + ');';
+  }
+
+
+  let codeStr = ''
+  for (let index = 0; index < ccc.length; index++) {
+    codeStr += 'var themeGridRangeItem' + (index + 1) + ' = new L.supermap.ThemeGridRangeItem({ start: ' + (index - 8) * 40 + ', end: ' + 40 * (index - 7) + ', color: color' + (index + 1) + ' });'
+  }
+  // console.log(codeStr);
+
+
+  const obj = {
+    a: {
+      b: "hello world"
+    },
+    c: {
+      d: "2",
+      f: {
+        g: "5"
+      },
+    },
+    e: "3"
+  }
+
+  const getObjValue = (params) => {
+    const keys = params.split('.');
+    let v = null;
+    const getVal = (obj) => {
+      keys.forEach(key => {
+        if (obj[key]) {
+          const o = obj[key]
+          return typeof o === "string" ? v = o : getVal(o)
+        } else {
+          return null
+        }
+      })
+      return v;
+    }
+    return getVal(obj);
+  }
+
+  console.log(getObjValue("c.f.g")) // 5
+  console.log(getObjValue("c.a.a")) // null
+
+  var a = ['a:b:c', 'a:b:d', 'a:c:d']
+
+  var b = ['a', 'c', 'd']
+
+  for (var i = 0; i < 3; i++) {
+    a = a.filter(it => it.indexOf(b[i]) >= 0)
+    console.log(a);
+  }
+  console.log(a);
+
+
+  // 迭代求斐波那契数
+  function fibonacciIterative(n) {
+    if (n < 1) return 0;
+    if (n <= 2) return 1;
+    let fibNMinus2 = 0;
+    let fibNMinus1 = 1;
+    let fibN = n;
+    for (let i = 2; i <= n; i++) { // n >= 2 
+      fibN = fibNMinus1 + fibNMinus2; // f(n-1) + f(n-2) 
+      fibNMinus2 = fibNMinus1;
+      fibNMinus1 = fibN;
+    }
+    return fibN;
+  }
+  console.log(fibonacciIterative(10));
+
+  // 递归求斐波那契数
+  function fibonacci(n) {
+    if (n < 1) return 0; // {1} 
+    if (n <= 2) return 1; // {2} 
+    return fibonacci(n - 1) + fibonacci(n - 2); // {3} 
+  }
+  console.log(fibonacci(10));
+
+  // 记忆化斐波那契数
+  function fibonacciMemoization(n) {
+    const memo = [0, 1]; // {1} 
+    const fibo = (n) => {
+      if (memo[n] != null) return memo[n]; // {2} 
+      return memo[n] = fibo(n - 1, memo) + fibo(n - 2, memo); // {3} 
+    };
+    return fibo(10);
+  }
+  console.log(fibonacciMemoization(10));
+</script>
+
 </html>
+
+
+<script>
+  // 冒泡排序 : 每迭代一次，排列一个。对比len - 1次
+  function bubbleSort(arr) {
+    var len = arr.length;
+    for (var i = 0; i < len - 1; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {        // 相邻元素两两对比
+          var temp = arr[j + 1];        // 元素交换
+          arr[j + 1] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+    return arr;
+  }
+  // 每次把最大的一个放最后
+
+  // 测试代码
+  var arr = [5, 3, 8, 4, 9, 1, 6, 2, 7];
+  console.log(bubbleSort(arr));  // 输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  // 选择排序
+  function selectionSort(arr) {
+    let len = arr.length;
+    for (let i = 0; i < len - 1; i++) {
+      let minIndex = i;
+      for (let j = i + 1; j < len; j++) {
+        if (arr[j] < arr[minIndex]) { // 寻找最小的数
+          minIndex = j; // 将最小数的索引保存
+        }
+      }
+      let temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    }
+    return arr;
+  }
+  // 每次把最小的一个放首位
+
+  // 测试
+  let arr1 = [5, 3, 6, 2, 10];
+  console.log(selectionSort(arr1)); // 输出：[2, 3, 5, 6, 10]
+
+
+  // 快速排序
+  function quickSort(arr, left = 0, right = arr.length - 1) {
+    if (left < right) {
+      let pivotIndex = pivot(arr, left, right);
+      // 递归排序左边
+      quickSort(arr, left, pivotIndex - 1);
+      // 递归排序右边
+      quickSort(arr, pivotIndex + 1, right);
+    }
+    return arr;
+  }
+
+  function pivot(arr, start = 0, end = arr.length - 1) {
+    let pivot = arr[start];
+    let swapIdx = start;
+
+    for (let i = start + 1; i <= end; i++) {
+      if (pivot > arr[i]) {
+        swapIdx++;
+        [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
+      }
+    }
+
+    [arr[start], arr[swapIdx]] = [arr[swapIdx], arr[start]];
+    return swapIdx;
+  }
+
+  // 测试代码
+  let arr2 = [5, 3, 7, 6, 2, 9];
+  console.log(quickSort(arr2)); // 输出：[2, 3, 5, 6, 10]
+
+  // 插入排序
+  function insertionSort(array) {
+    for (let i = 1; i < array.length; i++) {
+      let key = array[i];
+      let j = i - 1;
+
+      // 将key与前面的元素进行比较并移动
+      while (j >= 0 && array[j] > key) {
+        array[j + 1] = array[j];
+        j = j - 1;
+      }
+      array[j + 1] = key;
+    }
+    return array;
+  }
+
+  // 测试代码
+  let arr3 = [12, 11, 13, 5, 6];
+  console.log(insertionSort(arr3)); // 输出：[5, 6, 11, 12, 13]
+
+  // 二分查找
+  function binarySearch(arr, target) {
+    let max = arr.length - 1
+    let min = 0
+    while (min <= max) {
+      let mid = Math.floor((max + min) / 2)
+      if (target < arr[mid]) {
+        max = mid - 1
+      } else if (target > arr[mid]) {
+        min = mid + 1
+      } else {
+        return mid
+      }
+    }
+    return -1
+  }
+</script>
