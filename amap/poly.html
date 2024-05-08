@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <style>
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .input-card {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .pageinfo {
+      width: 280px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .amap-logo {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    .amap-copyright {
+      display: none !important;
+      visibility: hidden !important;
+    }
+  </style>
+  <title>高德地图Demo2</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <script
+    src="https://webapi.amap.com/maps?v=1.4.15&key=9b35a675e309f3a8b78464527e975b99&plugin=AMap.PolyEditor"></script>
+  <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+</head>
+
+<body>
+  <div id="container"></div>
+  <div class="pageinfo">
+    <h4>功能如下：</h4>
+    <p>1.初始化地块</p>
+    <p>2.编辑地块</p>
+    <p>3.更新地块时获取端点坐标</p>
+    <p>3.多边形周长面积计算</p>
+  </div>
+  <div class="input-card" style="width: 120px; height: 80px;">
+    <button class="btn" onclick="startEdit()" style="margin-bottom: 5px">编辑地块</button>
+    <button class="btn" onclick="polyEditor.close()" style="margin-top:5px">完成编辑</button>
+  </div>
+  <script type="text/javascript">
+    var key = 'f398daef89049d918105f6d4d412916a'
+    var wordTileLayer = new AMap.TileLayer({
+      // 天地图文字标注图块取图地址
+      getTileUrl: `http://t0.tianditu.gov.cn/DataServer?T=cia_w&tk=${key}&x=[x]&y=[y]&l=[z]`,
+      zIndex: 2
+    })
+    var xyzTileLayer = new AMap.TileLayer({
+      // 天地图底图图块取图地址
+      getTileUrl: `http://t0.tianditu.gov.cn/DataServer?T=img_w&tk=${key}&x=[x]&y=[y]&l=[z]`,
+      zIndex: 1
+    })
+    var map = new AMap.Map('container', {
+      resizeEnable: true,
+      center: [116.40, 39.90],
+      zoom: 10,
+      zooms: [5, 18],
+      layers: [xyzTileLayer, wordTileLayer]
+    })
+
+    var path = [
+      [116.403322, 39.920255],
+      [116.450703, 39.920255],
+      [116.450703, 39.970255],
+      [116.403322, 39.970255]
+    ]
+
+    var polygon = new AMap.Polygon({
+      path: path,
+      strokeColor: "#3c7fff",
+      strokeWeight: 5,
+      strokeOpacity: 0.8,
+      fillOpacity: 0.4,
+      fillColor: '#1791fc',
+      zIndex: 50,
+    })
+
+    map.add(polygon)
+    var PolyEditor = null
+    // 缩放地图到合适的视野级别
+    map.setFitView([polygon])
+
+    function startEdit() {
+      polyEditor = new AMap.PolyEditor(map, polygon)
+      polyEditor.open()
+      // AMap.event.addListener(polyEditor, 'end', polygonEnd)
+      AMap.event.addListener(polyEditor, 'adjust', polygonEnd)
+      // AMap.event.addListener(polyEditor, 'addnode', polygonEnd)
+    }
+
+    function polygonEnd(res) {
+      const points = res.target.w.path.map(it => [it.lng, it.lat])
+      const arrs = points.concat([points[0]])
+      const dis = AMap.GeometryUtil.distanceOfLine(arrs);
+      const area = AMap.GeometryUtil.ringArea(points);
+      alert('多边形端点为' + JSON.stringify(res.target.w.path) + '面积为' + area + '平方米，周长为' + dis + '米',)
+    }
+  </script>
+</body>
+
+</html>

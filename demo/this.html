@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>this指向</title>
+</head>
+
+<body>
+  <h3>this关键字</h3>
+  <p>this是JavaScript的一个关键字，一般指向调用它的对象</p>
+  <p>1.首先this指向的应该是一个对象。更具体的说是函数执行的上下文对象</p>
+  <p>2.其次这个对象指向的是调用他的对象，如果调用它的对象不存在，则会指向全局对象</p>
+</body>
+<script>
+  var o = {
+    fn() {
+      console.log(this)
+    }
+  }
+  o.fn()
+
+  class A { // 实例默认采用严格模式
+    fn() {
+      console.log(this)
+    }
+  }
+  var a = new A()
+  a.fn()
+
+  function fn() {
+    console.log(this)
+  }
+  fn() // window
+
+  function fn2() {
+    fn()
+  }
+  fn2() // window
+
+  var obj = {
+    fn2
+  }
+  obj.fn2() // window
+
+  var dx = {
+    arr: [1]
+  }
+  dx.arr.forEach(function () {
+    console.log(this)
+  }) // window
+
+  // forEach有两个参数，第一个是回调函数，第二个是this指向的对象
+
+  var fun = a.fn
+  fun() // undefined
+</script>
+
+</html>

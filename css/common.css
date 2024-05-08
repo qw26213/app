@@ -1,0 +1,185 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box
+}
+
+.main {
+  position: relative;
+}
+
+.ub {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.ub-ver {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.ub-ac {
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.ub-fs {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.ub-fe {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.ub-pc {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.ub-pj {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.ub-pe {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.ub-sj {
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.ub-f1 {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.ub-f2 {
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+.plr10{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.plr15{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.plr20{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.bbc{
+  border-bottom: 1px #eee solid;
+}
+
+.btc{
+  border-top: 1px #eee solid;
+}
+
+.mt10{
+  margin-top: 10px;
+}
+
+.mt20{
+  margin-top: 20px;
+}
+
+.mt30{
+  margin-top: 30px;
+}
+
+.ub-btn {
+  position: fixed;
+  width: 94vw;
+  bottom: 1.25rem;
+}
+
+.tx-c {
+  text-align: center;
+}
+
+.tx-l {
+  text-align: left;
+}
+
+.tx-r {
+  text-align: right;
+}
+
+.tx-j {
+  text-align: justify;
+}
+
+.bgb {
+  background-color: #fff;
+}
+
+.white {
+  color: #fff;
+}
+
+.red {
+  color: #f00;
+}
+
+.udb {
+  display: block;
+}
+
+.uhide {
+  display: none;
+}
+
+.uds {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.van-dialog__confirm .van-button__text {
+  color: #09f;
+}
+
+.require::after {
+  content: '*';
+  color: #f00;
+}
+
+.save {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 16px;
+  border: none;
+  background: #5BA4F8;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.item{
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+}
+
+.item input{
+  height: 46px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  text-align: right;
+}

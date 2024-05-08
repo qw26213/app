@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型和原型链</title>
+</head>
+
+<body>
+  <h3>原型——对象的属性</h3>
+  <p>包含被称为隐式原型的__proto__属性和被称为显式原型的prototype属性</p>
+</body>
+<script>
+  var parent = {
+    name: 'parent',
+    code: 'p'
+  }
+  var child = {
+    __proto__: parent, name: 'child'
+  }
+  console.log(parent.prototype) // undefined
+  console.log(child.name) // chlld
+  console.log(child.code) // p
+  console.log(child.hasOwnProperty('name')) // true
+  console.log(child.hasOwnProperty('code')) // false 向上通过prototype属性递归查找
+</script>
+
+</html>

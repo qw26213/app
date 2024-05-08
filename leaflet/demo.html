@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leaflet地图</title>
+  <link href="../css/leaflet.css" rel="stylesheet">
+  <script src="../js/leaflet.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="./js/geo.js"></script>
+  <script src="./js/poly.js"></script>
+  <script src="./js/small.js"></script>
+  <script src="../js/turf.min.js"></script>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .map-text2 {
+    background: #02a975;
+    color: #fff;
+    padding: 0 6px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .map-text3 {
+    background: #fff;
+    color: #02a975;
+    padding: 0 6px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .map-div {
+    border: none !important
+  }
+
+  .map-text {
+    display: block;
+    background-color: #f00;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 12px;
+  }
+
+  .map-text1 {
+    display: block;
+    background-color: #09f;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+  }
+
+  .padd20 {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    z-index: 999;
+    background: #fff;
+  }
+</style>
+
+<body>
+  <div id="map" style="width: 100%;height:100%"></div>
+  <!-- <div class="padd20">
+    <button onclick="removePolygon()">移除地块Layer</button>
+  </div> -->
+</body>
+
+</html>
+<script>
+  const tile1 = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+  const tile2 = "https://t{s}.tianditu.gov.cn/DataServer?T=cia_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}";
+  var mymap = L.map("map", {
+    center: [28.66846142431233, 108.22097969055177],
+    zoom: 10,
+    minZoom: 5,
+    maxZoom: 18,
+    layers: [L.tileLayer(tile1, { subdomains: "01234567" }), L.tileLayer(tile2, { subdomains: "01234567" })],
+    zoomControl: true, // 放大缩小控件，不显示
+    zoomDelta: 0.5, // 点击+-按钮的放缩刻度尺度，默认值1
+    zoomSnap: 0.5, // 地图能放缩的zoom的最小刻度尺度，默认值1
+    fullscreenControl: true, // 全屏控件，不显示
+    attributionControl: false // 右下角属性控件，不显示
+  });
+</script>

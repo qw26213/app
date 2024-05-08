@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生js实现拖拽效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cur {
+            position: absolute;
+            width: 200px;
+            top: 30px;
+            left: 30px;
+            height: 200px;
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cur"></div>
+</body>
+
+</html>
+<script>
+    //移除事件
+    var div = document.querySelector('.cur');
+    //1.鼠标按下
+    div.onmousedown = (event) => {
+        //短路语法兼容事件对象
+        var e = event || window.event;
+        //获取鼠标距离元素左侧顶部数据
+        var startX = e.offsetX;
+        var startY = e.offsetY;
+        // console.log(startX,startY); 
+        //2.鼠标在整个网页中移动
+        // 不能用 div.onmousemove
+        document.onmousemove = function (event1) {
+            var e1 = event1 || window.event;
+            //元素进行拖拽
+            div.style.left = e1.clientX - startX + "px";
+            div.style.top = e1.clientY - startY + "px";
+        }
+    }
+    //3. 鼠标抬起事件 ---> 将鼠标移动事件移除：给这个元素绑定多次事件，后者覆盖前者。
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    }
+</script>

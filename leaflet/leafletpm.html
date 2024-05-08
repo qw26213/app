@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>leaflet pm</title>
+  <link rel="stylesheet" href="../static/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.css" />
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="../js/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.min.js"></script>
+  <script>
+    const center = [40.02, 116.48]
+    let map = null;
+    let group = null;
+    const tile1 = "https://t{s}.tianditu.gov.cn/DataServer?T=img_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}";
+    const tile2 = "https://t{s}.tianditu.gov.cn/DataServer?T=cia_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}";
+    const initMap = () => {
+      map = L.map("map", {
+        center,
+        zoom: 18, // 缩放比列
+        minZoom: 10,
+        maxZoom: 16,
+        zoomControl: false, // 禁用 + - 按钮
+        doubleClickZoom: false, // 禁用双击放大
+        layers: [L.tileLayer(tile1, { subdomains: "01234567" }), L.tileLayer(tile2, { subdomains: "01234567" })],
+        attributionControl: false // 移除右下角leaflet标识
+      });
+      map.pm.setLang('zh');
+      map.pm.addControls({
+        position: 'topleft',
+        drawCircle: false,
+        drawPolyline: false,
+        drawRectangle: false,
+        drawMarker: true,
+        drawCircleMarker: false,
+        dragMode: false,
+        cutPolygon: false,
+        removalMode: false,
+      });
+      map.on("pm:create", e => {
+        if (e.shape === "Polygon") {
+          console.log(JSON.stringify(e.layer._latlngs));
+          map.pm.disableDraw('Polygon');
+        }
+        if (e.shape === 'Marker') {
+          console.log(JSON.stringify(e.layer._latlng));
+        }
+      });
+      map.on('click', e => {
+        const it = e.latlng;
+        const { lat, lng } = it
+        const blueIcon = L.icon({
+          iconUrl: 'https://whgok.gitee.io/home/images/marker-red.png',
+          iconSize: [24, 40],
+          iconAnchor: [12, 40]
+        })
+        const marker = L.marker([lat, lng], {
+          icon: blueIcon,
+          riseOnHover: true
+        }).addTo(map)
+      })
+    };
+    initMap();
+  </script>
+</body>
+
+</html>

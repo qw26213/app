@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="btn">获取地址</div>
+</body>
+
+</html>
+<script>
+  //  https://www.bilibili.com/video/BV1mH4y1Q7Z7?p=13&vd_source=25713c5cea1789a37c34cf1c28cb080b
+  document.querySelector('.btn').addEventListener('click', async () => {
+    const p = new URLSearchParams({ pname: "广东省", cname: "深圳市" })
+    // 发请求
+    const res = await fetch('http://hmajax.itheima.net/api/area?' + p.toString())
+    console.log(res);
+    if (res.status >= 200 && res.status < 300) {
+      // 处理响应
+      const data = await res.json();
+      console.log(data);
+    } else {
+      // 请求异常
+      console.log(res.status);
+    }
+  });
+</script>

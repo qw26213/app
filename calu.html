@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>重量金额计算</title>
+  <link href="https://whgok.gitee.io/home/css/common.css?v=2" rel="stylesheet">
+  <script src="https://whgok.gitee.io/home/js/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app" class="mainBody">
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">长</div>
+      <input type="text" class="ub-f1" placeholder="长" v-model="a" oninput="value=value.replace(/[^\d.]/g,'')">
+    </div>
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">宽</div>
+      <input type="text" class="ub-f1" placeholder="宽" v-model="b" oninput="value=value.replace(/[^\d.]/g,'')">
+    </div>
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">高</div>
+      <input type="text" class="ub-f1" placeholder="高" v-model="c" oninput="value=value.replace(/[^\d.]/g,'')">
+    </div>
+    <div class="plr20 mt20 tx-c">
+      <button class="save" @click="calc()">计算</button>
+    </div>
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">计泡重量</div>
+      <div class="ub-f1 tx-r">{{ d }}</div>
+    </div>
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">计费重量</div>
+      <div class="ub-f1 tx-r">{{ e }}</div>
+    </div>
+    <div class="ub ub-ac item plr15 bbc">
+      <div class="tit">金额</div>
+      <div class="ub-f1 tx-r">{{ f }}</div>
+    </div>
+  </div>
+</body>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        a: null,
+        b: null,
+        c: null,
+        d: null,
+        e: null,
+        f: null,
+      }
+    },
+    methods: {
+      calc() {
+        this.d = (+this.a * +this.b * +this.c) / 6000
+        this.e = Math.ceil(+this.d)
+        if (+this.id < 3) {
+          this.f = 10
+        } else {
+          this.f = 10 + Math.ceil(+this.e - 1) * 5
+        }
+      }
+    }
+  })
+  app.mount('#app')
+
+
+  // JavaScript 获取指定字符串中出现次数最多的字符及其出现次数
+  let str = 'abbcccdddddeeeeeeefffffff';//特意给定字符e和f都出现了7次
+  function findCharMore(str) {
+    let charNum = {};
+    /*遍历字符串，得到对象{字符:出现次数}*/
+    for (let i = 0; i < str.length; i++) {
+      let e = str.charAt(i);
+      if (charNum[e]) {
+        charNum[e]++;
+      } else {
+        charNum[e] = 1;
+      }
+    }
+    console.log(charNum);
+    let { maxCharArr, count } = { maxCharArr: [], count: 0 };
+    /*遍历对象，找出出现次数最多的元素*/
+    for (let key in charNum) {
+      /*出现次数更多则需剔除先前的元素并添加当前元素*/
+      if (count < charNum[key]) {
+        count = charNum[key];
+        maxCharArr.shift();
+        maxCharArr.push(key);
+      }
+      /*出现次数相同则在数组添加元素*/
+      if (count == charNum[key] && maxCharArr.indexOf(key) == -1) {
+        maxCharArr.push(key);
+      }
+    }
+    /*返回对象{高频字符数组，最大出现次数}*/
+    return { maxCharArr, count }
+  }
+  console.log(findCharMore(str));
+//打印结果：{ maxCharArr: [ 'e', 'f' ], count: 7 }
+</script>
+
+</html>

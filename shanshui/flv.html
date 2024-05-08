@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>在线监控</title>
+</head>
+<style>
+.video{
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+</style>
+<body>
+  <video id="videoElement1" controls autoplay muted class="video"></video>
+  <script src="../flv/flvjs/flv.min.js"></script>
+  <script>
+      const player = document.getElementById('videoElement1');
+      if (flvjs.isSupported()) {
+        const flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          hasAudio: false,
+          url: 'https://ffmpeg1.shanshuiyuntu.com/video?url=rtsp://admin:a12345678@111.22.3.75:33661',
+          isLive: true
+        });
+        flvPlayer.attachMediaElement(videoElement1);
+        flvPlayer.load(); //加载
+        flvPlayer.play(); //播放
+      }
+  </script>
+</body>
+
+</html>

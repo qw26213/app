@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>moving lines</title>
+    <link rel="stylesheet" href="../js/leaflet.css">
+    <style>
+        html,
+        body,
+        #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="../js/leaflet-echarts3.js"></script>
+    <script>
+        const baseUrl = 'image://' + window.origin + '/home/images/'
+        const cycleImg = baseUrl + 'c1.png'
+        const breedImg = baseUrl + 'b1.png'
+        const wcImg = baseUrl + 'wc.png'
+        const origicImg = baseUrl + 'origaic.png'
+        const center = [40.340362, 115.576515]
+        const points0 = [
+            { lnglat: [115.562668, 40.349877], type: "breed", symbol: breedImg, name: "养殖场" },
+            { lnglat: [115.558805, 40.340849], type: "breed", symbol: breedImg, name: "养殖场" },
+            { lnglat: [115.567632, 40.335063], type: "breed", symbol: breedImg, name: "养殖场" },
+            { lnglat: [115.575442, 40.344680], type: "wc", symbol: wcImg, name: "公共厕所" },
+            { lnglat: [115.576243, 40.337994], type: "recycle", symbol: cycleImg, name: "资源再生站" },
+            { lnglat: [115.576987, 40.329567], type: "origic", symbol: origicImg, name: "有机肥还田点" },
+            { lnglat: [115.588017, 40.334474], type: "origic", symbol: origicImg, name: "有机肥还田点" },
+            { lnglat: [115.585656, 40.341638], type: "origic", symbol: origicImg, name: "有机肥还田点" },
+            { lnglat: [115.585270, 40.346838], type: "origic", symbol: origicImg, name: "有机肥还田点" },
+        ];
+        const tile1 = "https://t{s}.tianditu.gov.cn/DataServer?T=img_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}";
+        const tile2 = "https://t{s}.tianditu.gov.cn/DataServer?T=cia_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}";
+        const map = L.map("map", {
+            center,
+            zoom: 15, // 缩放比列
+            minZoom: 15,
+            maxZoom: 16,
+            zoomControl: false, // 禁用 + - 按钮
+            layers: [L.tileLayer(tile1, { subdomains: "01234567" }), L.tileLayer(tile2, { subdomains: "01234567" })],
+            attributionControl: false // 移除右下角leaflet标识
+        });
+        const overlay = new L.echartsLayer3(map, echarts);
+        const chartsContainer = overlay.getEchartsContainer();
+        const myChart = overlay.initECharts(chartsContainer);
+        const cyclePoint = { coord: points0[4].lnglat }
+        const entrypoints = points0.filter(it => it.type !== 'recycle')
+        const origicpoints = points0.filter(it => it.type === 'origic')
+        const points1 = entrypoints.map(it => ([{ coord: it.lnglat }, cyclePoint]))
+        const points2 = origicpoints.map(it => ([cyclePoint, { coord: it.lnglat }]))
+        const points = points0.map(it => ({
+            symbol: it.symbol,
+            name: it.name,
+            value: it.lnglat
+        }))
+        const colors = ['#FFE743', '#6FFF7D']
+        const series = [{
+            type: "effectScatter",
+            coordinateSystem: "geo",
+            zlevel: 3,
+            showEffectOn: "emphasis",
+            symbolSize: 33,
+            itemStyle: {
+                normal: {
+                    color: colors[1],
+                    fontSize: 20
+                },
+                emphasis: {
+                    areaColor: "#2B91B7"
+                }
+            },
+            data: points
+        }, {
+            type: "effectScatter",
+            coordinateSystem: "geo",
+            zlevel: 3,
+            symbolSize: 50,
+            itemStyle: {
+                normal: {
+                    color: colors[1],
+                    fontSize: 20
+                },
+                emphasis: {
+                    areaColor: "#2B91B7"
+                }
+            },
+            data: [points[4]]
+        }];
+        [points1, points2].forEach((it, ii) => {
+            series.push({
+                type: 'lines',
+                zlevel: 1,
+                lineStyle: {
+                    normal: {
+                        color: colors[ii],
+                        width: 1,
+                        curveness: 0.2
+                    }
+                },
+                data: it
+            }, {
+                type: 'lines',
+                zlevel: 2,
+                effect: {
+                    show: true,
+                    period: 12,
+                    trailLength: 0.7,
+                    symbol: "arrow",
+                    symbolSize: 7
+                },
+                lineStyle: {
+                    normal: {
+                        color: colors[ii],
+                        width: 1,
+                        // opacity: 0.4,
+                        curveness: 0.2
+                    }
+                },
+                data: it
+            })
+        })
+        const option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                show: false
+            },
+            geo: {
+                map: '',
+                label: {
+                    emphasis: {
+                        show: false
+                    }
+                },
+                roam: true,
+                itemStyle: {
+                    normal: {
+                        areaColor: '#323c48',
+                        borderColor: '#404a59'
+                    },
+                    emphasis: {
+                        areaColor: '#2a333d'
+                    }
+                }
+            },
+            series
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        overlay.setOption(option);
+    </script>
+</body>
+
+</html>

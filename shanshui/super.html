@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超图Demo</title>
+  <link rel="stylesheet" href="../css/leaflet.css" />
+  <link rel="stylesheet" href="../css/iclient-leaflet.min.css" />
+  <script type="text/javascript" src="../js/leaflet.js"></script>
+  <script type="text/javascript" src="../js/iclient-leaflet.min.js"></script>
+  <style type="text/css">
+    html,
+    body,
+    #map {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+    }
+
+    .superBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map" style="margin:0 auto;"></div>
+
+  <script type="text/javascript">
+    var url = "http://support.supermap.com.cn:8090/iserver/services/map-china400/rest/maps/China";
+    var map = L.map('map', {
+      crs: L.CRS.EPSG4326,
+      center: [40.02, 116.47],
+      maxZoom: 18,
+      minZoom: 3,
+      zoom: 12
+    });
+
+    L.supermap.tiledMapLayer(url).addTo(map);
+
+    L.supermap.tiandituTileLayer({ layerType: "img", key: "1d109683f4d84198e37a38c442d68311", attribution: "北京朝阳公司" }).addTo(map).once("load ", () => {
+      initPoly();
+    });
+
+    L.supermap.tiandituTileLayer({ layerType: "cia", key: "1d109683f4d84198e37a38c442d68311", attribution: "北京朝阳公司" }).addTo(map)
+
+    function initPoly() {
+      const polygon = {
+        type: "Feature",
+        geometry: {
+          "type": "Polygon",
+          "coordinates": [[
+            [116.46846771240236, 40.03188843583539],
+            [116.45276069641116, 40.02058605112768],
+            [116.45413398742676, 40.00612678332556],
+            [116.47464752197268, 40.00783576550271],
+            [116.47670745849612, 40.02242610182391],
+            [116.46846771240236, 40.03188843583539]
+          ]]
+        }
+      }
+      L.geoJSON(polygon, {
+        style: {
+          fillColor: '#ff0',
+          color: '#ff0'
+        }
+      }).addTo(map)
+    }
+
+  </script>
+</body>
+
+</html>

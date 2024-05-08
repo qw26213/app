@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/coortransform.js"></script>
+  <script src="../js/geojson.js"></script>
+  <title>行政区坐标转换</title>
+</head>
+
+<body>
+  <div id="con">
+
+  </div>
+</body>
+
+</html>
+<script>
+  let coordinates = polygon.features[0].geometry.coordinates
+  coordinates.forEach(ele => {
+    ele[0] = ele[0].map(it => {
+      console.log(it)
+      const res = gcj02towgs84(it[0], it[1])
+      console.log(res)
+      return res
+    });
+  })
+  setTimeout(() => {
+    document.getElementById('con').innerHTML = JSON.stringify(coordinates)
+  }, 1000)
+</script>

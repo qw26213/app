@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css写三角</title>
+</head>
+<style type="text/css">
+  .rrr {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, red, red 50%, transparent 50%, transparent 100%);
+  }
+
+  .tri {
+    margin-top: 15px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 50px solid red;
+  }
+
+  .righttri {
+    margin-top: 15px;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 75px solid red;
+  }
+</style>
+
+<body>
+  <div class="rrr"> </div>
+  <div class="tri"></div>
+  <div class="righttri"></div>
+</body>
+
+</html>

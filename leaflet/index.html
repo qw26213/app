@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leaflet地图</title>
+  <link href="../css/leaflet.css" rel="stylesheet">
+  <script src="../js/leaflet.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="./js/geo.js"></script>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .map-text {
+    display: block;
+    background-color: #f00;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 12px;
+  }
+
+  .map-text1 {
+    display: block;
+    background-color: #09f;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+  }
+</style>
+
+<body>
+  <div id="map" style="width: 100%;height:100%"></div>
+</body>
+
+</html>
+<script>
+  // 天地图(wgs84)
+  const tile0 = "https://t0.tianditu.gov.cn/DataServer?T=vec_w&tk=85c9d12d5d691d168ba5cb6ecaa749eb&x={x}&y={y}&l={z}";
+  const tile1 = "https://t0.tianditu.gov.cn/DataServer?T=img_w&tk=85c9d12d5d691d168ba5cb6ecaa749eb&x={x}&y={y}&l={z}";
+  const tile2 = "https://t1.tianditu.gov.cn/DataServer?T=cia_w&tk=85c9d12d5d691d168ba5cb6ecaa749eb&x={x}&y={y}&l={z}";
+  const tile3 = "https://t1.tianditu.gov.cn/DataServer?T=cva_w&tk=85c9d12d5d691d168ba5cb6ecaa749eb&x={x}&y={y}&l={z}";
+  const tile4 = 'https://c.tile.osm.org/{z}/{x}/{y}.png'
+  // arcgis(wgs84)
+  const tile8 = 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' //卫星图
+  const tile9 = 'https://server.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}' // 道路图
+  const tile10 = "https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}" // 地形图
+  // gcj02
+  const tile5 = 'http://webst02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
+  const tile6 = 'http://webst02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=6&x={x}&y={y}&z={z}'
+  const tile7 = 'http://webst02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
+  const tile11 = 'https://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer/tile/{z}/{y}/{x}'
+
+  var circleLayer = null
+
+  var mymap = L.map("map", {
+    center: [32.633593, 112.866669],
+    zoom: 11,
+    minZoom: 5,
+    maxZoom: 19,
+    // layers: [L.tileLayer(tile8)],
+    zoomControl: true, // 放大缩小控件，不显示
+    zoomDelta: 0.5, // 点击+-按钮的放缩刻度尺度，默认值1
+    zoomSnap: 0.5, // 地图能放缩的zoom的最小刻度尺度，默认值1
+    fullscreenControl: true, // 全屏控件，不显示
+    attributionControl: false // 右下角属性控件，不显示
+  });
+
+  var baseMaps = {
+    "天地图矢量": L.tileLayer(tile0),
+    "天地图卫星": L.tileLayer(tile1),
+    "天地图路网+标注": L.tileLayer(tile2),
+    "天地图标注": L.tileLayer(tile3),
+    "OpenStreetMap": L.tileLayer(tile4),
+    "ArcGis卫星": L.tileLayer(tile8).addTo(mymap),
+    "ArcGis道路": L.tileLayer(tile9),
+    "ArcGis地形": L.tileLayer(tile10),
+    "高德地图矢量": L.tileLayer(tile5),
+    "高德地图卫星": L.tileLayer(tile6),
+    "高德地图路网+标注": L.tileLayer(tile7),
+    "中国标准地图": L.tileLayer(tile11),
+  };
+
+  var layerControl = L.control.layers(baseMaps).addTo(mymap);
+
+  drawBoundary();
+
+  mymap.on('click', (e) => {
+    console.log("the point is " + e.latlng)
+  });
+
+  var polygonLayer = L.polygon([
+    [32.63, 112.92],
+    [32.63, 112.78],
+    [32.73, 112.78],
+    [32.73, 112.92]
+  ]).addTo(mymap)
+
+  var points = [
+    { lat: 32.633, lng: 112.80 },
+    { lat: 32.633, lng: 112.85 },
+    { lat: 32.633, lng: 112.90 },
+    { lat: 40.018, lng: 116.468 },
+  ]
+  var group = L.layerGroup().addTo(mymap)
+  points.forEach((it, ii) => {
+    var lat = it.lat
+    var lng = it.lng
+    var blueIcon = L.icon({
+      iconUrl: 'https://whgok.gitee.io/home/images/red.png',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40]
+    })
+    var marker = L.marker([lat, lng], {
+      icon: blueIcon,
+      riseOnHover: true
+    }).addTo(group).on('click', function (e) {
+      const point = [e.latlng.lat, e.latlng.lng]
+      showPopup(point, ii)
+      addCircle(point)
+    })
+  })
+
+  // 文字标注
+  let textIcon = L.divIcon({
+    html: '河南省唐河县',
+    className: "map-text",
+    iconAnchor: [55, -11],
+    iconSize: [110, 22]
+  });
+
+  var txt1 = L.marker([32.683308, 112.846069], { icon: textIcon })
+  var txt2 = L.marker([32.603308, 112.846069], { icon: textIcon })
+
+  var markerArr = L.layerGroup([txt1, txt2]);
+  mymap.addLayer(markerArr);
+
+  function showPopup(point, i) {
+    const popupHtml = '<p><b>编号</b>：' + i + '054551123456</p>\
+                      <p><b>地址</b>：河南省南阳市唐河县城郊乡</p>\
+                      <p><b>采集人</b>：王小二</p>\
+                      <p><b>采样坐标</b>：'+ point[0] + ',' + point[1] + '</p>\
+                      <p><b>采样批次</b>：20210804</p>'
+    L.popup({ offset: [0, -20] }).setLatLng(point).setContent(popupHtml).openOn(mymap)
+  }
+
+  function addCircle(point) {
+    if (circleLayer) {
+      mymap.removeLayer(circleLayer)
+    }
+    circleLayer = L.circle(point, 150, {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5
+    }).addTo(mymap)
+  }
+
+  //加载唐河县边界
+  function drawBoundary() {
+    const url = 'https://whgok.gitee.io/home/leaflet/js/tanghe.json'
+    var jhLine;
+    $.getJSON(url, function (json) {
+      jhLine = L.geoJSON(json, { style: { color: "#6495ED", weight: 3, fillColor: '#C0C0C0', fillOpacity: 0.05 } });
+      jhLine.addTo(mymap);
+    })
+  }
+
+  const uuu = [
+    [43.92403, 81.02426],
+    [43.91775, 81.02250],
+    [43.92190, 81.02274],
+    [43.91875, 81.02005],
+    [43.92423, 81.02430],
+    [43.91874, 81.02002],
+    [43.91583, 81.02129],
+    [43.92457, 81.02988],
+    [43.91488, 81.02180],
+    [43.92402, 81.02428],
+    [43.91488, 81.02180],
+    [43.92189, 81.02228],
+    [43.91579, 81.02130],
+    [43.92492, 81.02876],
+    [43.91580, 81.02129],
+    [43.91578, 81.02130],
+    [43.91699, 81.01870],
+    [43.92430, 81.02972],
+    [43.91487, 81.02179],
+    [43.91876, 81.02002],
+    [43.92426, 81.02426],
+    [43.92180, 81.02577],
+    [43.92189, 81.02237],
+    [43.92456, 81.02988],
+    [43.91877, 81.02001],
+    [43.91700, 81.02367],
+    [43.91774, 81.02247],
+    [43.92174, 81.02580],
+    [43.92192, 81.02230],
+    [43.91678, 81.01849],
+    [43.91875, 81.02003],
+    [43.91702, 81.02359],
+    [43.91774, 81.02244],
+    [43.91777, 81.02246],
+    [43.91701, 81.01871],
+    [43.92431, 81.02972],
+    [43.92147, 81.02719],
+    [43.92148, 81.02723],
+    [43.92105, 81.02531],
+    [43.92493, 81.02878],
+    [43.92148, 81.02719],
+    [43.91486, 81.02182],
+    [43.92176, 81.02577],
+    [43.91703, 81.01872],
+    [43.91700, 81.02360],
+    [43.92193, 81.02274],
+    [43.92584, 81.02927],
+    [43.92520, 81.02759],
+    [43.92520, 81.02764],
+    [43.92515, 81.02764],
+    [43.92586, 81.02929],
+    [43.92522, 81.02764],
+    [43.92540, 81.02894],
+    [43.92515, 81.02763],
+    [43.92589, 81.02866],
+    [43.92544, 81.02880],
+    [43.92588, 81.02865],
+    [43.92522, 81.02764]
+  ]
+  var xjpoints = uuu.map(it => ({ lat: it[0], lng: it[1] }))
+  xjpoints.forEach((it, ii) => {
+    const marker = L.marker(it, {
+      icon: L.divIcon({
+        html: '' + (ii + 1),
+        className: "map-text1",
+        iconAnchor: [-8, -8],
+        iconSize: [16, 16]
+      }),
+      riseOnHover: true
+    }).addTo(mymap).on('click', function (e) {
+      const point = [e.latlng.lat, e.latlng.lng]
+      showPopup(point, ii)
+    })
+  })
+
+</script>

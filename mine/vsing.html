@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="maximum-scale=1,initial-scale=1.0, user-scalable=no, width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>童伴|语数外PK</title>
+<link href="css/common.css" rel="stylesheet"/>
+<link href="css/index.css" rel="stylesheet"/>
+<script src="js/jquery.min.js"></script>
+<script src="js/index.js"></script>
+</head>
+<body>
+<div class="header tx-c">
+	<div class="back" onclick="back()"></div>
+    <div class="pageTit">PK中……</div>
+</div>
+<div class="mainbody plr15">
+	<div class="m1_vsing ub ub-ver ub-pj ub-ac mt15">
+		<div class="vsing_fighter ub ub-ac pkTop">
+			<div class="fighter ub ub-pc ub-ac ub-ver ml05">
+				<div class="ub w100">
+					<div class="touPic ub-img7 ml05"></div>
+					<div class="ub-f1" style="margin-left:5px" id="myMsg">
+						<h4>王红果</h4>
+						<div><span class="ub-img getjifen ufl"></span><b class="get ml03">25</b></div>
+					</div>
+				</div>
+				<div class="ub ub-ac mt10" id="myJifen">
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen" id="last01"></span>
+				</div>
+			</div>
+			<div class="ub-f1 ub ub-ac ub-ver">
+				<div class="vsPic ub-img7 mt05"></div>
+				<p class="mt20" id="lestTime">02:00</p>
+			</div>
+			<div class="fighter ub ub-pc ub-ac ub-ver mr05">
+				<div class="ub w100">
+					<div class="ub-f1" style="margin-left:10px" id="oppoMsg">
+						<h4>王红果王红果</h4>
+						<div><b class="get mr03">55</b><span class="ub-img getjifen ufl" id="jifen2"></span></div>
+					</div>
+					<div class="touPic ub-img7 mr05"></div>
+				</div>
+				<div class="ub ub-ac mt10" id="oppoJifen">
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen"></span>
+					<span class="ub-img jifen" id="last02"></span>
+				</div>
+			</div>
+		</div>
+		<div class="w100" style="margin-top:-1px; margin-bottom:-1px"><img src="images/lian.png" style="display:block;width:100%" /></div>
+		<div class="topics pkBot tx-c">
+			<p class="tx-c uhide" id="status">稍等，结果即将揭晓......</p>
+			<div class="wonResult ub-img7 uhide" id="result"></div>
+			<div class="tx-c mt15 uhide nextOper">
+				<div class="bb01 ub-img7" onclick="openHref('vsing.html')"></div>
+				<div class="bb02 ub-img7" onclick="openHref('vsing.html')"></div>
+			</div>
+			<div class="testTitles" style="padding-top:15px">
+				<dl class="ushow">
+					<dt>1.中国人口最多的省是哪个最多的省是哪个省?</dt>
+					<dd onclick="nextTitle(this)" class="no">A、河南</dd>
+					<dd onclick="nextTitle(this)" class="no">B、陕西</dd>
+					<dd onclick="nextTitle(this)" class="no">C、山西</dd>
+					<dd onclick="nextTitle(this)" class="ok">D、东北</dd>
+					<dd class="answer"><span>答案：</span><i>A</i></dd>
+				</dl>			
+				<dl class="uhide">
+					<dt>2.中国人口最多的省是哪个省？</dt>
+					<dd onclick="nextTitle(this)" class="no">A、河南</dd>
+					<dd onclick="nextTitle(this)" class="ok">B、陕西</dd>
+					<dd onclick="nextTitle(this)" class="no">C、山西</dd>
+					<dd onclick="nextTitle(this)" class="no">D、东北</dd>
+					<dd class="answer"><span>答案：</span><i>A</i></dd>
+				</dl>			
+				<dl class="uhide">
+					<dt>3.中国人口最多的省是哪个省？</dt>
+					<dd onclick="nextTitle(this)" class="ok">A、河南</dd>
+					<dd onclick="nextTitle(this)" class="no">B、陕西</dd>
+					<dd onclick="nextTitle(this)" class="no">C、山西</dd>
+					<dd onclick="nextTitle(this)" class="no">D、东北</dd>
+					<dd class="answer"><span>答案：</span><i>A</i></dd>
+				</dl>			
+				<dl class="uhide">
+					<dt>4.中国人口最多的省是哪个省？</dt>
+					<dd onclick="nextTitle(this)" class="ok">A、河南</dd>
+					<dd onclick="nextTitle(this)" class="no">B、陕西</dd>
+					<dd onclick="nextTitle(this)" class="no">C、山西</dd>
+					<dd onclick="nextTitle(this)" class="no">D、东北</dd>
+					<dd class="answer"><span>答案：</span><i>A</i></dd>
+				</dl>			
+				<dl class="uhide">
+					<dt>5.中国人口最多的省是哪个省？</dt>
+					<dd onclick="nextTitle(this)" class="no">A、河南</dd>
+					<dd onclick="nextTitle(this)" class="ok">B、陕西</dd>
+					<dd onclick="nextTitle(this)" class="no">C、山西</dd>
+					<dd onclick="nextTitle(this)" class="no">D、东北</dd>
+					<dd class="answer"><span>答案：</span><i>A</i></dd>
+				</dl>			
+			</div>
+		</div>
+	</div>
+    <div class="m2 mt10 ub ub-ac ub-ver rankCount w100">
+        <div class="ub ub-pj rankbland w100">
+            <div class="blandtit ub-img7 ml15"></div>
+            <div class="querybland mr15">查看榜单<span class="aright ub-img7"></span></div>
+        </div>
+        <div class="ub ub-ver w100 rankBox">
+            <div class="ub ub-pj">
+                <div class="xuhao tx-c">1</div>
+                <div class="userImg ub ub-ac ub-pc">
+                    <div class="touxiang ub-img7"></div>
+                </div>
+                <div class="userName ub-f1 tx-l">中国</div>
+                <div class="userScale tx-c">1200</div>
+            </div>
+        </div>
+    </div>
+    <div class="tx-c ub ub-ac ub-ver">
+        <div class="ruleTit mt15 ub-img7"></div>    
+        <div class="tx-l ulev mt15 ruleCon">
+        <b>一、奖品设置</b><br/>
+        <p>每天，系统将随机抽取3名幸运用户，每名幸运用户随机获取以下奖品中的一个。奖品包括；<br/>
+        星空侠智能手表－机器人系列；<br/>
+        星空侠智能手表－铠甲限量定制版；<br/>
+        星空侠智能手表－小星星系列；<br/>
+        星空侠智能手表200元代金券；<br/>
+        星空侠智能手表100元代金券；<br/>
+        星空侠智能手表50元代金券；<br/>
+        每个周将提供总计42件奖品回馈给喜爱星空侠智能的用户。</p>
+        <b>二、抽奖时间</b><br/>
+        <p>每天8点到23点，每2小时30分钟0秒一次，时间段内中奖时间随机；如果前一个时段没有人抽中，下一个时段就会有两人中奖；以此类推。</p>
+        <b>三、抽奖资格</b><br/>
+        <p>单日获得星币多于30个即可抽奖一次，最多可抽奖5次；</p>
+        <b>四、星币获取</b><br/>
+        <p>在微信或星空侠学习App上赢了一局获3个星币，输了扣1个星币；</p>
+        <b>五、特别奖励</b><br/>
+        <p>有任何一个朋友点击了您分享到微信朋友圈或QQ空间的链接后进行答题，您将最多可以获得50个星币的奖励。</p>
+        <p>以上规则，2016年9月10号 开始执行。</p>
+        <p>详情请点击“开始抽奖”查看。</p>
+      </div>
+    </div>
+</div>
+<div class="m1_bb mt10 w100"><img src="images/bg2.jpg" alt=""></div>
+</body>
+</html>
+<script>
+var lestTime = 120;//剩余时间
+var myresult = [];//做题结果
+var myGet = 0, oppoGet = 0;//自己和对手的蛋
+var p = 1;//给服务器的题号
+var oTT = 0;//题目索引
+var myplayTime = 0;//我的题目做完时间
+var timer = setInterval(timeAlter,1000);//时间进度
+function timeAlter(){
+	timeChange(lestTime,'lestTime');
+	lestTime--;
+	if(lestTime < 0) {
+		clearInterval(timer);showResult();commitResult();
+	}
+}
+var oppotimer = setInterval(oppoChange,300);
+function oppoChange(){
+	var timeout = 1000 + 4000 * Math.random();
+	if(timeout<2500){
+		$('#oppoJifen span').eq(oTT).addClass('jifeng');oppoGet++;
+	}else{
+		$('#oppoJifen span').eq(oTT).addClass('jifenr');
+	}
+	oTT++;if(oTT>4){
+		if($("#last01").hasClass("jifeng")||$("#last01").hasClass("jifenr")){
+			$(".topics dl").each(function(){
+				$(this).fadeIn();
+			});
+			$('#status').hide();
+			clearInterval(timer);showResult();commitResult();
+		}
+		clearInterval(oppotimer)}
+}
+function nextTitle(obj){
+	$(obj).addClass('active').siblings().addClass('noactive');	
+	$(obj).siblings().attr('onclick',"");
+	$(obj).parent().hide().next().fadeIn();
+	var oT = $(obj).parent().index();
+	if($(obj).hasClass('ok')){
+		$('#myJifen span').eq(oT).addClass('jifeng');
+		myGet++;
+		var json = {"questionId":p,"correct": true}
+		p++;
+		myresult.push(JSON.stringify(json));
+	}else{
+		$('#myJifen span').eq(oT).addClass('jifenr');
+		var json = {"questionId":p,"correct": false};
+		p++;
+		myresult.push(JSON.stringify(json));
+	}
+	if(oT==4){
+		if($("#last02").hasClass("jifeng")||$("#last02").hasClass("jifenr")){
+			$(".topics dl").each(function(){
+				$(this).fadeIn();
+			});
+			clearInterval(timer);showResult();commitResult();
+		};
+		if(!$("#last02").hasClass("jifeng")&&!$("#last02").hasClass("jifenr")){
+			$('#status').show();
+			myplayTime = 120 -lestTime;
+		}
+	}
+	$(obj).attr('onclick',"");
+}
+function showResult(){
+	if(myGet>oppoGet){
+		$('#result').show();
+	}else if(myGet==oppoGet){
+		if(myplayTime>=15){
+			$('#result').addClass('failResult');
+		}else{
+			$('#result').show();
+		}
+	}else{
+		$('#result').addClass('failResult');
+	}
+
+	$('.ok').addClass('rightColor');
+	$('dd').addClass('bgtrans');
+	$('dt').addClass('pr40');
+	$('.active.ok').append('<span class="myselect">我的选项</span>').siblings('dt').append('<span class="rightStatus ub-img">正确</span>');
+	$('.active.no').addClass('errorColor').append('<span class="errselect">我的选项</span>').siblings('dt').append('<span class="rightStatus ub-img errorStatus">错误</span>');
+	$('.nextOper').show();
+	$('#lestTime').html('00:00');
+	document.title = "PK结果";
+	$('.pageTit').html("PK结果")
+}
+function commitResult(){
+	var myTime = 120 - lestTime;
+	var myscore = myGet * 20;
+	$.ajax({
+		url:ip+"pkg/api/pk/result",
+        type:"post",
+        data: {
+        	playerId:localStorage.playerId,
+        	winMedal:localStorage.winMedal,
+        	totalTime:myTime,
+        	totalRecord:myscore,
+        	results:JSON.stringify(myresult)
+        },
+        dataType:"json",
+		// contentType: "application/json",
+        success:function(data) {
+        	console.log('success!');
+        },
+        error: function (error) {
+        	console.log('error!');
+        }
+	});
+}
+</script>

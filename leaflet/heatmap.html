@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Heatmap Layer</title>
+  <link rel="stylesheet" href="https://whgok.gitee.io/home/css/leaflet.css" />
+  <script src="https://whgok.gitee.io/home/js/leaflet.js"></script>
+  <script src="https://whgok.gitee.io/home/js/heatmap.min.js"></script>
+  <script src="https://whgok.gitee.io/home/js/turf.min.js"></script>
+  <script src="https://whgok.gitee.io/home/js/leaflet-heatmap.js"></script>
+</head>
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  #map {
+    height: 100%;
+  }
+</style>
+
+<body>
+  <div id="map"></div>
+</body>
+
+</html>
+<script>
+  var dectData = {
+    max: 15,
+    data: [{
+      lng: 116.47,
+      lat: 40.02,
+      count: 8
+    }, {
+      lng: 116.57,
+      lat: 40.02,
+      count: 8
+    }, {
+      lng: 116.57,
+      lat: 40.12,
+      count: 8
+    }, {
+      lng: 116.47,
+      lat: 40.12,
+      count: 8
+    }]
+  };
+
+  var tile1 = L.tileLayer('https://t{s}.tianditu.gov.cn/DataServer?T=img_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}', { subdomains: "01234567" });
+  var tile2 = L.tileLayer('https://t{s}.tianditu.gov.cn/DataServer?T=cia_w&tk=f398daef89049d918105f6d4d412916a&x={x}&y={y}&l={z}', { subdomains: "01234567" });
+
+  var cfg = {
+    "radius": 0.02,
+    "maxOpacity": 1,
+    "scaleRadius": true,
+    "useLocalExtrema": true,
+    latField: 'lat',
+    lngField: 'lng',
+    valueField: 'count',
+    gradient: {
+      '0.3': 'blue',
+      '0.6': 'red',
+      '1': 'green'
+    }
+  };
+  var center = [40.065461, 116.518936]
+  var heatmapLayer = new HeatmapOverlay(cfg);
+  var map = new L.Map('map', {
+    preferCanvas: true,
+    center,
+    zoom: 12,
+    layers: [tile1, tile2, heatmapLayer]
+  });
+
+  map.on("click", (e) => {
+    console.log("[" + e.latlng + "]");
+  });
+
+  heatmapLayer.setData(dectData);
+</script>

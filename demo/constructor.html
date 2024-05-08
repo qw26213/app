@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>构造函数</title>
+</head>
+
+<body>
+  <h3>构造函数模式中拥有了类和实例的概念</h3>
+  <p>1.构造函数习惯上首字母大写</p>
+  <p>2.构造函数需要使用new来调用</p>
+  <p>3.prototype是构造函数的属性</p>
+  <p>4.__proto__是实例的属性</p>
+  <p>5.每一个JavaScript对象(除了 null )都具有的一个属性，叫__proto__，这个属性会指向该对象的原型</p>
+  <p>6.每个原型都有一个constructor属性指向关联的构造函数</p>
+</body>
+<script>
+  function Person(name, age, gender) {
+    this.name = name
+    this.age = age
+    this.gender = gender
+    this.sayName = function () {
+      alert(this.name);
+    }
+  }
+
+  var per = new Person("孙悟空", 18, "男");
+  function Dog(name, age, gender) {
+    this.name = name
+    this.age = age
+    this.gender = gender
+  }
+
+  var dog = new Dog("旺财", 4, "雄")
+  console.log(per);//当我们直接在页面中打印一个对象时，事件上是输出的对象的toString()方法的返回值
+  console.log(dog);
+  var obj = {
+    a: 'a',
+    b: 'b'
+  }
+
+  function Child() {
+    this.name = '王红果'
+  }
+  const child = new Child()
+
+  console.log(obj)
+  console.log(Child.prototype === child) // false
+  console.log('__proto__')
+  console.log(child.__proto__)
+  console.log('prototype')
+  console.log(Child.prototype)
+  console.log(Child.prototype.constructor)
+  console.log(Child.prototype.constructor === Child)
+  console.log(child.__proto__ === Child.prototype)//true, __proto__指向当前所属类的原型(protoType)
+</script>
