@@ -53,6 +53,8 @@
   const tile8 = 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' //卫星图
   const tile9 = 'https://server.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}' // 道路图
   const tile10 = "https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}" // 地形图
+  const tile_mars = "http://data.mars3d.cn/tile/img/{z}/{x}/{y}.jpg"
+  const tile_local = "http://localhost:8081/mars/{z}/{x}/{y}.jpg"
   // gcj02
   const tile5 = 'http://webst02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
   const tile6 = 'http://webst02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=6&x={x}&y={y}&z={z}'
@@ -87,6 +89,8 @@
     "高德地图卫星": L.tileLayer(tile6),
     "高德地图路网+标注": L.tileLayer(tile7),
     "中国标准地图": L.tileLayer(tile11),
+    "mars_3d": L.tileLayer(tile_mars),
+    "tile_local": L.tileLayer(tile_local)
   };
 
   var layerControl = L.control.layers(baseMaps).addTo(mymap);
@@ -115,7 +119,7 @@
     var lat = it.lat
     var lng = it.lng
     var blueIcon = L.icon({
-      iconUrl: 'https://whgok.gitee.io/home/images/red.png',
+      iconUrl: '../images/red.png',
       iconSize: [40, 40],
       iconAnchor: [20, 40]
     })
@@ -165,7 +169,7 @@
 
   //加载唐河县边界
   function drawBoundary() {
-    const url = 'https://whgok.gitee.io/home/leaflet/js/tanghe.json'
+    const url = '../leaflet/js/tanghe.json'
     var jhLine;
     $.getJSON(url, function (json) {
       jhLine = L.geoJSON(json, { style: { color: "#6495ED", weight: 3, fillColor: '#C0C0C0', fillOpacity: 0.05 } });
